@@ -140,6 +140,33 @@ h2.title{font:800 clamp(34px,5vw,52px)/1 var(--display);letter-spacing:-.035em;m
 .steps li b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:var(--line);color:var(--ink);flex:none}
 .steps li.on{color:var(--ink);border-color:var(--accent)}
 .steps li.on b{background:var(--accent);color:#fff}
+.demo img.shot{display:block;width:100%;border-radius:12px;margin-top:12px}
+.demo .caption{margin:10px 0 0;color:var(--muted);font-size:14px}
+.demo.live{padding:0;overflow:hidden}
+.demo.live iframe{display:block;width:100%;border:0;background:#F6F5FB}
+.tabs,.lang-btns{display:flex;gap:6px;flex-wrap:wrap}
+.lang-btns{margin-top:12px}
+.tabs button,.lang-btns button{font:600 14px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
+.tabs button[aria-selected=true],.lang-btns button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab-panel{margin-top:14px}
+.mini-label{display:block;font-weight:600;font-size:13px;color:var(--muted)}
+.mini-label input{display:block;width:100%;margin-top:6px;font:inherit;font-size:15px;color:var(--ink);padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface)}
+.listings{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.listings li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.listings li span{color:var(--muted);font-size:13px}
+.listings li .price{grid-row:1 / span 2;grid-column:2;align-self:center;color:var(--ink);font-weight:600;font-size:15px}
+.listings li.none{display:block;color:var(--muted)}
+.panel-note{margin:0 0 10px;color:var(--muted)}
+.checklist{margin:0;padding-left:18px}
+.checklist li{margin:4px 0}
+.tr-native{font-size:22px;margin:16px 0 4px;min-height:1.4em}
+.tr-roman{color:var(--muted);margin:0;min-height:1.4em}
+.chat{display:flex;flex-direction:column;gap:8px;min-height:300px}
+.bubble{max-width:85%;padding:9px 13px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-size:14px}
+.bubble .who{display:block;font-size:12px;font-weight:600;color:var(--muted)}
+.bubble.you{align-self:flex-end;background:var(--accent);border-color:var(--accent);color:#fff}
+.bubble.you .who{color:rgba(255,255,255,.75)}
+.bubble .action{display:block;margin-top:4px;font-size:12px;color:var(--accent);font-weight:600}
 .more{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--line)}
 .more li{display:grid;grid-template-columns:240px 1fr auto;gap:24px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
 .more a.name{font:600 19px var(--display);text-decoration:none}
@@ -354,50 +381,181 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
 <section id="projects">
   <div class="wrap">
     <h2 class="title">Projects</h2>
-
-    <article class="feature" data-src="Projects, AskDB">
-      <div>
-        <p class="kind">AI project: natural language to SQL</p>
-        <h3>AskDB</h3>
-        <p>Ask a database a question in plain English and get the SQL and the results back. A FAISS index retrieves only the relevant tables and similar solved examples, Gemini writes the query, and it runs on a read-only connection. If SQLite rejects it, the error goes back to the model for one fix.</p>
-        <ul class="tags"><li>Python</li><li>FastAPI</li><li>FAISS</li><li>RAG</li><li>Gemini API</li><li>SQLite</li></ul>
-        <div class="links"><a href="https://github.com/ramya036/askdb" target="_blank" rel="noopener">View code on GitHub</a></div>
-      </div>
-      <div class="demo" aria-label="AskDB example">
-        <div class="q" id="askdb-q">How many patients live in each state?</div>
-        <pre id="askdb-sql" aria-live="off"></pre>
-        <table id="askdb-rows" hidden><tr><th>state</th><th>patient_count</th></tr><tr><td>GA</td><td>81</td></tr><tr><td>TX</td><td>42</td></tr><tr><td>WA</td><td>39</td></tr></table>
-      </div>
-    </article>
-
-    <article class="feature" data-src="Projects, MealMate">
-      <div>
-        <p class="kind">Full-stack project: food ordering and payments</p>
-        <h3>MealMate</h3>
-        <p>A React and Spring Boot ordering platform with JWT login, customer and admin roles, and Stripe payments. Prices are always computed on the server, and an order is only marked paid when Stripe's signed webhook confirms it, so retries never double-charge.</p>
-        <ul class="tags"><li>Java</li><li>Spring Boot</li><li>React</li><li>MySQL</li><li>Stripe</li><li>Docker</li></ul>
-        <div class="links"><a href="https://github.com/ramya036/mealmate" target="_blank" rel="noopener">View code on GitHub</a></div>
-      </div>
-      <div class="demo" aria-label="MealMate order lifecycle">
-        <ol class="steps" id="steps">
-          <li><b>1</b>Order placed, priced on the server</li>
-          <li><b>2</b>Stripe payment confirmed by webhook</li>
-          <li><b>3</b>Kitchen preparing</li>
-          <li><b>4</b>Out for delivery</li>
-          <li><b>5</b>Delivered</li>
-        </ol>
-      </div>
-    </article>
-
-    <ul class="more" aria-label="More projects">
-      <li data-src="Projects, Object detection"><a class="name" href="https://github.com/ramya036/object-detection-opencv" target="_blank" rel="noopener">Object detection</a><span>Finds and labels 80 kinds of objects in photos and live webcam video using a pretrained SSD MobileNet model.</span><span class="tech">Python, OpenCV</span></li>
-      <li data-src="Projects, Multilingual translator"><a class="name" href="https://github.com/ramya036/multilingual-translator" target="_blank" rel="noopener">Multilingual translator</a><span>Translates and transliterates typed text, PDFs or speech, and reads the result aloud.</span><span class="tech">Python, Tkinter</span></li>
-      <li data-src="Projects, Nest Point"><a class="name" href="https://github.com/ramya036/nestpoint-real-estate" target="_blank" rel="noopener">Nest Point</a><span>Real estate listings with separate buyer, seller and admin dashboards and searchable listings.</span><span class="tech">PHP, MySQL</span></li>
-      <li data-src="Projects, Voice assistant"><a class="name" href="https://github.com/ramya036/voice-assistant" target="_blank" rel="noopener">Voice assistant</a><span>Listens for spoken commands to open sites, search Wikipedia, find places and tell the time.</span><span class="tech">Python</span></li>
-      <li data-src="Projects, React apps"><a class="name" href="https://github.com/ramya036/react-produce-filter" target="_blank" rel="noopener">React apps</a><span>A searchable, filterable list and a <a href="https://github.com/ramya036/tic-tac-toe-react" target="_blank" rel="noopener">tic-tac-toe game</a> against the computer.</span><span class="tech">React</span></li>
-    </ul>
+    <div id="project-list"></div>
   </div>
 </section>
+
+<!-- Demo panels. A project's "demo" field picks one of these by id, or uses
+     { type: "image" } or { type: "live" } for projects without a custom demo. -->
+<template id="demo-askdb">
+  <div class="q">How many patients live in each state?</div>
+  <pre class="askdb-sql" aria-label="Generated SQL"></pre>
+  <table class="askdb-rows" hidden><tr><th>state</th><th>patient_count</th></tr><tr><td>GA</td><td>81</td></tr><tr><td>TX</td><td>42</td></tr><tr><td>WA</td><td>39</td></tr></table>
+</template>
+
+<template id="demo-mealmate">
+  <ol class="steps">
+    <li><b>1</b>Order placed, priced on the server</li>
+    <li><b>2</b>Stripe payment confirmed by webhook</li>
+    <li><b>3</b>Kitchen preparing</li>
+    <li><b>4</b>Out for delivery</li>
+    <li><b>5</b>Delivered</li>
+  </ol>
+</template>
+
+<template id="demo-nestpoint">
+  <div class="tabs" role="tablist" aria-label="Sign in as">
+    <button role="tab" aria-selected="true" data-tab="buyer">Buyer</button>
+    <button role="tab" aria-selected="false" data-tab="seller">Seller</button>
+    <button role="tab" aria-selected="false" data-tab="admin">Admin</button>
+  </div>
+  <div class="tab-panel" data-panel="buyer">
+    <label class="mini-label">Search listings<input class="np-search" type="search" placeholder="Try garden, 3 or Midtown"></label>
+    <ul class="listings"></ul>
+  </div>
+  <div class="tab-panel" data-panel="seller" hidden>
+    <p class="panel-note">Sellers add a listing with a photo, then manage it from their dashboard.</p>
+    <ul class="checklist"><li>Name, address and age of the home</li><li>Bedrooms, bathrooms, garden and parking</li><li>Price and one JPG, PNG or WEBP photo</li><li>Delete a listing they no longer need</li></ul>
+  </div>
+  <div class="tab-panel" data-panel="admin" hidden>
+    <p class="panel-note">Admins see every listing on the platform. Every page checks the signed-in role and sends anyone else to the right login.</p>
+    <ul class="checklist"><li>Passwords stored as bcrypt hashes</li><li>Prepared statements on every query</li><li>End-to-end tests run on every push</li></ul>
+  </div>
+</template>
+
+<template id="demo-translator">
+  <div class="q">Good morning, how are you?</div>
+  <div class="lang-btns" role="group" aria-label="Translate to">
+    <button type="button" aria-pressed="true" data-lang="hi">Hindi</button>
+    <button type="button" aria-pressed="false" data-lang="te">Telugu</button>
+  </div>
+  <p class="tr-native" lang="hi"></p>
+  <p class="tr-roman"></p>
+</template>
+
+<template id="demo-assistant">
+  <div class="chat" aria-label="Example conversation"></div>
+</template>
+
+<script>
+/* ======================================================================
+   EDIT YOUR PROJECTS HERE. Order on the page = order in this list.
+   To swap a project for a job description, change or replace one entry.
+
+   name, kind ("Area project: what it is"), description, tags,
+   code (GitHub link), live (optional demo link), and demo:
+     "askdb" | "mealmate" | "nestpoint" | "translator" | "assistant"   custom demos below
+     { type: "image", images: [{ src, alt, label, caption }] }          screenshots with tabs
+     { type: "live", url, height }                                       embedded live app
+   ====================================================================== */
+const PROJECTS = [
+  {
+    name: "AskDB",
+    kind: "AI project: natural language to SQL",
+    description: "Ask a database a question in plain English and get the SQL and the results back. A FAISS index retrieves only the relevant tables and similar solved examples, Gemini writes the query, and it runs on a read-only connection. If SQLite rejects it, the error goes back to the model for one fix.",
+    tags: ["Python", "FastAPI", "FAISS", "RAG", "Gemini API", "SQLite"],
+    code: "https://github.com/ramya036/askdb",
+    demo: "askdb",
+  },
+  {
+    name: "MealMate",
+    kind: "Full-stack project: food ordering and payments",
+    description: "A React and Spring Boot ordering platform with JWT login, customer and admin roles, and Stripe payments. Prices are always computed on the server, and an order is only marked paid when Stripe's signed webhook confirms it, so retries never double-charge.",
+    tags: ["Java", "Spring Boot", "React", "MySQL", "Stripe", "Docker"],
+    code: "https://github.com/ramya036/mealmate",
+    demo: "mealmate",
+  },
+  {
+    name: "Object detection",
+    kind: "Computer vision project: detect objects in photos and video",
+    description: "Finds and labels 80 kinds of everyday objects in photos and live webcam video with a pretrained SSD MobileNet v3 model on OpenCV. I fixed a label-mapping bug common in tutorials that turned cats into dogs, and added a command-line tool with JSON output and tests.",
+    tags: ["Python", "OpenCV", "Deep learning", "pytest"],
+    code: "https://github.com/ramya036/object-detection-opencv",
+    demo: { type: "image", images: [
+      { src: "img/cat_detected.jpg", alt: "A cat detected with 72% confidence", label: "Cat", caption: "cat 72%" },
+      { src: "img/coffee_detected.jpg", alt: "A cup detected with 82% confidence", label: "Coffee", caption: "cup 82%, dining table 57%" },
+    ] },
+  },
+  {
+    name: "Nest Point",
+    kind: "Full-stack project: real estate listings",
+    description: "A PHP and MySQL listings site where sellers post homes with photos, buyers search them and admins oversee everything. Each role has its own sign-up, login and dashboard, with bcrypt passwords, prepared statements, safe photo uploads, Docker setup and end-to-end tests.",
+    tags: ["PHP", "MySQL", "Docker", "GitHub Actions"],
+    code: "https://github.com/ramya036/nestpoint-real-estate",
+    demo: "nestpoint",
+  },
+  {
+    name: "Multilingual translator",
+    kind: "Language project: translate and transliterate",
+    description: "Translates typed text, PDFs or speech between English and nine Indian languages, shows the result in Latin letters and reads it aloud. The core logic is separate from the desktop app and command-line tool, so it's fully tested offline.",
+    tags: ["Python", "Tkinter", "Google Translate", "Speech"],
+    code: "https://github.com/ramya036/multilingual-translator",
+    demo: "translator",
+  },
+  {
+    name: "Voice assistant",
+    kind: "Voice project: hands-free desktop assistant",
+    description: "Listens for spoken commands to open sites, search Wikipedia, find places on a map, check the weather and play music, and answers out loud. Commands are understood by a tested rule-based parser, and it runs on Windows, macOS and Linux.",
+    tags: ["Python", "Speech recognition", "Text to speech"],
+    code: "https://github.com/ramya036/voice-assistant",
+    demo: "assistant",
+  },
+  {
+    name: "Tic-tac-toe",
+    kind: "React project: play against the computer",
+    description: "A tic-tac-toe game where the computer takes wins, blocks yours and plays the center. It highlights the winning line and keeps score. The game rules live outside React and are unit-tested, along with full games played through the UI.",
+    tags: ["React", "Hooks", "Jest", "Testing Library"],
+    code: "https://github.com/ramya036/tic-tac-toe-react",
+    live: "tic-tac-toe/",
+    demo: { type: "live", url: "tic-tac-toe/", height: 560 },
+  },
+  {
+    name: "Produce finder",
+    kind: "React project: instant search and filters",
+    description: "Search a produce list by name and narrow it to fruits or vegetables, with a live result count and a clear empty state. Built with class components and React Bootstrap, with the matching rule unit-tested on its own.",
+    tags: ["React", "React Bootstrap", "Jest"],
+    code: "https://github.com/ramya036/react-produce-filter",
+    live: "produce-filter/",
+    demo: { type: "live", url: "produce-filter/", height: 560 },
+  },
+];
+
+(() => {
+  const list = document.getElementById("project-list");
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  PROJECTS.forEach(p => {
+    const el = document.createElement("article");
+    el.className = "feature";
+    el.dataset.src = "Projects, " + p.name;
+    const links = ['<a href="' + esc(p.code) + '" target="_blank" rel="noopener">View code on GitHub</a>']
+      .concat(p.live ? ['<a href="' + esc(p.live) + '" target="_blank" rel="noopener">Open live demo</a>'] : []);
+    el.innerHTML =
+      '<div><p class="kind">' + esc(p.kind) + '</p><h3>' + esc(p.name) + '</h3><p>' + esc(p.description) + '</p>' +
+      '<ul class="tags">' + p.tags.map(t => '<li>' + esc(t) + '</li>').join("") + '</ul>' +
+      '<div class="links">' + links.join("") + '</div></div>';
+    const demo = document.createElement("div");
+    demo.className = "demo";
+    demo.setAttribute("aria-label", p.name + " demo");
+    if (typeof p.demo === "string") {
+      demo.append(document.getElementById("demo-" + p.demo).content.cloneNode(true));
+      demo.dataset.play = p.demo;
+    } else if (p.demo && p.demo.type === "image") {
+      const imgs = p.demo.images;
+      demo.innerHTML = (imgs.length > 1 ? '<div class="lang-btns" role="group" aria-label="Example">' +
+          imgs.map((im, i) => '<button type="button" aria-pressed="' + (i === 0) + '" data-i="' + i + '">' + esc(im.label) + '</button>').join("") + '</div>' : "") +
+        '<img class="shot" loading="lazy" src="' + esc(imgs[0].src) + '" alt="' + esc(imgs[0].alt) + '">' +
+        '<p class="caption">' + esc(imgs[0].caption || "") + '</p>';
+      demo.dataset.play = "image";
+      demo._images = imgs;
+    } else if (p.demo && p.demo.type === "live") {
+      demo.classList.add("live");
+      demo.innerHTML = '<iframe loading="lazy" title="' + esc(p.name) + ' live demo" src="' + esc(p.demo.url) + '" style="height:' + (p.demo.height || 520) + 'px"></iframe>';
+    }
+    el.append(demo);
+    list.append(el);
+  });
+})();
+</script>
 
 <section id="skills">
   <div class="wrap">
@@ -475,7 +633,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
     const src = el.dataset.src;
     const anchor = el.closest('section')?.id || 'top';
     const items = el.querySelectorAll('li:not(.tags li), p:not(.kind):not(.role):not(.stack)');
-    const head = (el.querySelector('h3')?.textContent || src) + ' ' + (el.querySelector('.role')?.textContent || '');
+    const head = (el.querySelector('h3')?.textContent || src) + ' ' + (el.querySelector('.role')?.textContent || '') + ' ' + (el.querySelector('.kind')?.textContent || '');
     const stack = el.querySelector('.stack,.tags')?.textContent || '';
     if (items.length) items.forEach(i => { if (i.closest('.tags')) return; docs.push({ text: i.textContent.trim(), ctx: head + ' ' + stack + ' ' + src, src, anchor, el, item: i }); });
     else docs.push({ text: [...el.children].map(c => c.textContent.trim()).filter(Boolean).join(': ').replace(/\s+/g,' '), ctx: head + ' ' + src, src, anchor, el });
@@ -553,25 +711,80 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
   document.getElementById('ask-form').addEventListener('submit', e => { e.preventDefault(); if (input.value.trim()) ask(input.value); });
   document.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => { input.value = b.textContent; ask(b.textContent); }));
 
-  // ---- AskDB demo: type the SQL once when it scrolls into view ----
-  const sql = "SELECT state, COUNT(*) AS patient_count\nFROM patients\nGROUP BY state\nORDER BY patient_count DESC;";
-  const pre = document.getElementById('askdb-sql'), rows = document.getElementById('askdb-rows');
-  function playSQL(){
-    if (reduced) { pre.textContent = sql; rows.hidden = false; return; }
-    let i = 0; const t = setInterval(() => { pre.textContent = sql.slice(0, ++i); if (i >= sql.length) { clearInterval(t); rows.hidden = false; } }, 22);
-  }
-  // ---- MealMate demo: step through the order lifecycle ----
-  const steps = [...document.querySelectorAll('#steps li')];
-  function playSteps(){
-    if (reduced) { steps.forEach(s => s.classList.add('on')); return; }
-    steps.forEach((s, i) => setTimeout(() => s.classList.add('on'), 450 * i));
-  }
+  // ---- Project demos: each starts once when it scrolls into view ----
   const once = (el, fn) => {
     if (!('IntersectionObserver' in window)) return fn();
-    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { fn(); io.disconnect(); } }, { threshold: .4 });
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { fn(); io.disconnect(); } }, { threshold: .35 });
     io.observe(el);
   };
-  once(pre, playSQL); once(steps[0].parentElement, playSteps);
+  const typeInto = (el, text, speed, done) => {
+    if (reduced) { el.textContent = text; done && done(); return; }
+    let i = 0; const t = setInterval(() => { el.textContent = text.slice(0, ++i); if (i >= text.length) { clearInterval(t); done && done(); } }, speed);
+  };
+  const players = {
+    askdb(d) {
+      const sql = "SELECT state, COUNT(*) AS patient_count\nFROM patients\nGROUP BY state\nORDER BY patient_count DESC;";
+      typeInto(d.querySelector('.askdb-sql'), sql, 22, () => { d.querySelector('.askdb-rows').hidden = false; });
+    },
+    mealmate(d) {
+      const steps = [...d.querySelectorAll('.steps li')];
+      if (reduced) return steps.forEach(s => s.classList.add('on'));
+      steps.forEach((s, i) => setTimeout(() => s.classList.add('on'), 450 * i));
+    },
+    nestpoint(d) {
+      const homes = [
+        { name: 'Sunny 3-bed near Midtown', bed: 3, bath: 2, garden: 'Yes', parking: 'Yes', price: 250000 },
+        { name: 'Downtown loft', bed: 1, bath: 1, garden: 'No', parking: 'Yes', price: 180000 },
+        { name: 'Family home with garden', bed: 4, bath: 3, garden: 'Yes', parking: 'Yes', price: 410000 },
+      ];
+      const ul = d.querySelector('.listings'), search = d.querySelector('.np-search');
+      const show = () => {
+        const q = search.value.trim().toLowerCase();
+        const hits = homes.filter(h => !q || [h.name, h.bed, h.bath, h.price, h.garden === 'Yes' ? 'garden' : '', h.parking === 'Yes' ? 'parking' : ''].join(' ').toLowerCase().includes(q));
+        ul.innerHTML = hits.length ? hits.map(h => '<li><strong>' + h.name + '</strong><span>' + h.bed + ' bed, ' + h.bath + ' bath, garden ' + h.garden.toLowerCase() + '</span><span class="price">$' + h.price.toLocaleString() + '</span></li>').join('')
+          : '<li class="none">No listings match.</li>';
+      };
+      search.addEventListener('input', show); show();
+      d.querySelectorAll('[role=tab]').forEach(tab => tab.addEventListener('click', () => {
+        d.querySelectorAll('[role=tab]').forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+        d.querySelectorAll('.tab-panel').forEach(p => p.hidden = p.dataset.panel !== tab.dataset.tab);
+      }));
+    },
+    translator(d) {
+      const out = { hi: ['सुप्रभात, आप कैसे हैं?', 'suprabhAta, Apa kaise haiM?'], te: ['శుభోదయం, మీరు ఎలా ఉన్నారు?', 'shubhodayaM, mIru èlA unnAru?'] };
+      const native = d.querySelector('.tr-native'), roman = d.querySelector('.tr-roman');
+      const pick = lang => {
+        d.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+        native.lang = lang; roman.textContent = '';
+        typeInto(native, out[lang][0], 45, () => typeInto(roman, out[lang][1], 28));
+      };
+      d.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => pick(b.dataset.lang)));
+      pick('hi');
+    },
+    assistant(d) {
+      const chat = d.querySelector('.chat');
+      const lines = [
+        ['you', 'What’s the time?'], ['lisa', 'The time is 3:38 PM.'],
+        ['you', 'Where is Georgia State University?'], ['lisa', 'Here is Georgia State University on the map.', 'Opens Google Maps'],
+        ['you', 'Play lo-fi beats'], ['lisa', 'Playing lo-fi beats on YouTube Music.', 'Opens YouTube Music'],
+      ];
+      lines.forEach(([who, text, action], i) => setTimeout(() => {
+        const b = document.createElement('div');
+        b.className = 'bubble ' + who;
+        b.innerHTML = '<span class="who">' + (who === 'you' ? 'You' : 'Lisa') + '</span>' + text + (action ? '<span class="action">' + action + '</span>' : '');
+        chat.append(b);
+      }, reduced ? 0 : 700 * i));
+    },
+    image(d) {
+      const img = d.querySelector('img.shot'), cap = d.querySelector('.caption');
+      d.querySelectorAll('[data-i]').forEach(b => b.addEventListener('click', () => {
+        const im = d._images[b.dataset.i];
+        img.src = im.src; img.alt = im.alt; cap.textContent = im.caption || '';
+        d.querySelectorAll('[data-i]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      }));
+    },
+  };
+  document.querySelectorAll('.demo[data-play]').forEach(d => once(d, () => players[d.dataset.play](d)));
 })();
 </script>
 </body>
