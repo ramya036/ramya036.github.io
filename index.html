@@ -53,7 +53,7 @@ a{color:inherit}
 .theme svg{width:18px;height:18px}
 
 /* Hero */
-.hero{padding:64px 0 40px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+.hero{padding:64px 0 40px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start}
 @media (max-width: 1000px){.hero{grid-template-columns:1fr;gap:0}}
 .status{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--muted);margin:0 0 22px}
 .status i{width:9px;height:9px;border-radius:50%;background:#22A06B;box-shadow:0 0 0 4px color-mix(in srgb,#22A06B 22%,transparent)}
@@ -84,6 +84,13 @@ h1 span{display:block}
 .result{border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin-top:14px}
 .result:first-child{margin-top:0}
 .result p{margin:0;max-width:72ch}
+.result p + p{margin-top:8px}
+.result .lead{font-weight:500}
+.result .also{color:var(--muted);font-size:14px;margin-top:10px}
+.also-list{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.also-list li{margin:4px 0;max-width:68ch}
+.also-list strong{color:var(--ink)}
+.result .tools{font-size:14px;color:var(--muted)}
 .result .src{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
 .result .src a{color:var(--accent);text-decoration:none;font-weight:600}
 mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2px}
@@ -240,6 +247,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
         <li><button type="button">Have you used React?</button></li>
         <li><button type="button">Experience with Kafka?</button></li>
         <li><button type="button">Tell me about MealMate</button></li>
+        <li><button type="button">Tell me about your experience</button></li>
       </ul>
       <div class="answer" id="answer" aria-live="polite"></div>
       <p class="note">This is a small keyword-retrieval search over the text on this page, the same idea as the retrieval step in AskDB. It runs in your browser and sends nothing anywhere.</p>
@@ -449,7 +457,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
   addEventListener('scroll', () => bar.classList.toggle('scrolled', scrollY > 8), { passive: true });
 
   // ---- Ask about my work: tiny TF-IDF retrieval over this page ----
-  const STOP = new Set('a an and are at be by can could did do does for from had has have how i in is it its me my of on or so tell that the their them this to was what when where which who why with you your about any ever done work worked use used using'.split(' '));
+  const STOP = new Set('a an and are at be by can could did do does for from had has have how i in is it its me my of on or so tell that the their them this to was what when where which who why with you your about any ever done work worked use used using build built make made create created develop developed'.split(' '));
   const SYN = {
     ai:['llm','rag','agent','ml','transformers','gemini','faiss','nlp','bert'], ml:['ai','pytorch','tensorflow','opencv'],
     llm:['rag','gemini','langchain','ai'], genai:['llm','rag','ai'], frontend:['react','redux','typescript','angular'],
@@ -469,8 +477,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
     const items = el.querySelectorAll('li:not(.tags li), p:not(.kind):not(.role):not(.stack)');
     const head = (el.querySelector('h3')?.textContent || src) + ' ' + (el.querySelector('.role')?.textContent || '');
     const stack = el.querySelector('.stack,.tags')?.textContent || '';
-    if (items.length) items.forEach(i => { if (i.closest('.tags')) return; docs.push({ text: i.textContent.trim(), ctx: head + ' ' + stack, src, anchor }); });
-    else docs.push({ text: [...el.children].map(c => c.textContent.trim()).filter(Boolean).join(': ').replace(/\s+/g,' '), ctx: head, src, anchor });
+    if (items.length) items.forEach(i => { if (i.closest('.tags')) return; docs.push({ text: i.textContent.trim(), ctx: head + ' ' + stack + ' ' + src, src, anchor, el, item: i }); });
+    else docs.push({ text: [...el.children].map(c => c.textContent.trim()).filter(Boolean).join(': ').replace(/\s+/g,' '), ctx: head + ' ' + src, src, anchor, el });
   });
   docs.forEach(d => { d.tok = tokens(d.text + ' ' + d.ctx); d.set = new Set(d.tok); });
   const df = {}; docs.forEach(d => d.set.forEach(t => df[t] = (df[t]||0) + 1));
@@ -481,24 +489,65 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
   function highlight(text, terms){
     return esc(text).replace(/[A-Za-z0-9+#]+/g, w => terms.has(stem(w.toLowerCase())) ? '<mark>' + w + '</mark>' : w);
   }
+  const GENERIC = new Set(['experience','career','job','background','overview','summary','resume','yourself','introduce','company','companies','role','worked'].map(stem));
+  const jobs = [...document.querySelectorAll('.job')];
+  const when = el => (el.querySelector('.when')?.innerText || '').replace(/\s*\n\s*/g, ', ');
+  const srcLink = d => '<span class="src">Found in <a href="#' + d.anchor + '">' + esc(d.src) + '</a></span>';
+
+  function explain(d, terms){
+    const el = d.el, hl = t => highlight(t, terms);
+    if (el.classList.contains('job')) {
+      const company = el.querySelector('h3').textContent, role = el.querySelector('.role').textContent;
+      const others = [...el.querySelectorAll('ul li')].filter(li => li !== d.item).slice(0, 2);
+      const stack = el.querySelector('.stack')?.textContent;
+      return '<div class="result"><p class="lead">At <strong>' + esc(company) + '</strong> I was a ' + esc(role) + ' (' + esc(when(el)) + ').</p>'
+        + '<p>' + hl(d.text) + '</p>'
+        + (others.length ? '<p class="also">Also there:</p><ul class="also-list">' + others.map(li => '<li>' + hl(li.textContent.trim()) + '</li>').join('') + '</ul>' : '')
+        + (stack ? '<p class="tools">Tools: ' + hl(stack) + '</p>' : '')
+        + srcLink(d) + '</div>';
+    }
+    if (el.classList.contains('feature')) {
+      const name = el.querySelector('h3').textContent, kind = el.querySelector('.kind').textContent;
+      const tags = [...el.querySelectorAll('.tags li')].map(li => li.textContent).join(', ');
+      return '<div class="result"><p class="lead"><strong>' + esc(name) + '</strong> is a project I built. ' + esc(kind.replace(/^.*?:\s*/, '').replace(/^./, c => c.toUpperCase())) + '.</p>'
+        + '<p>' + hl(d.text) + '</p><p class="tools">Tools: ' + hl(tags) + '</p>' + srcLink(d) + '</div>';
+    }
+    if (el.closest('#skills')) return '<div class="result"><p class="lead">My ' + esc(el.querySelector('h3').textContent) + ' skills:</p><p>' + hl(d.text) + '</p>' + srcLink(d) + '</div>';
+    return '<div class="result"><p>' + hl(d.text) + '</p>' + srcLink(d) + '</div>';
+  }
+
+  function overview(){
+    answer.innerHTML = '<div class="result"><p class="lead">Here is my experience, most recent first:</p><ul class="also-list">'
+      + jobs.map(j => '<li><strong>' + esc(j.querySelector('h3').textContent) + '</strong>, ' + esc(j.querySelector('.role').textContent) + ' (' + esc(when(j)) + '): ' + esc(j.querySelector('ul li').textContent.trim()) + '</li>').join('')
+      + '</ul><span class="src">See the full <a href="#experience">Experience</a> section</span></div>';
+  }
+
+  function projectsOverview(){
+    const feats = [...document.querySelectorAll('.feature')].map(f => '<li><strong>' + esc(f.querySelector('h3').textContent) + '</strong>: ' + esc(f.querySelector('.kind').textContent.replace(/^.*?:\s*/, '')) + '</li>');
+    const more = [...document.querySelectorAll('.more li')].map(li => '<li><strong>' + esc(li.querySelector('.name').textContent) + '</strong>: ' + esc(li.children[1].textContent.trim()) + '</li>');
+    answer.innerHTML = '<div class="result"><p class="lead">Here are my projects:</p><ul class="also-list">' + feats.concat(more).join('') + '</ul><span class="src">See the full <a href="#projects">Projects</a> section</span></div>';
+  }
+  const PROJ = new Set(['project','portfolio','app','apps'].map(stem));
+
   function ask(q){
     let qt = tokens(q);
+    if (qt.length && qt.every(t => GENERIC.has(t))) return overview();
+    if (qt.length && qt.every(t => PROJ.has(t))) return projectsOverview();
     const expanded = new Set(qt);
     qt.forEach(t => (SYN[t] || []).forEach(s => expanded.add(stem(s))));
     const scored = docs.map(d => {
       let s = 0; expanded.forEach(t => { if (d.set.has(t)) s += idf(t) * (qt.includes(t) ? 1.6 : 1); });
       const inText = tokens(d.text).filter(t => expanded.has(t)).length;
-      return { d, s: s + inText * 0.4 };
+      const weight = d.el.closest('#skills') ? 0.35 : 1;
+      return { d, s: (s + inText * 0.4) * weight };
     }).filter(x => x.s > 0).sort((a,b) => b.s - a.s);
     const seen = new Set(); const top = [];
-    for (const x of scored) { if (seen.has(x.d.src)) continue; seen.add(x.d.src); top.push(x); if (top.length === 2) break; }
+    for (const x of scored) { if (seen.has(x.d.src)) continue; if (top.length && x.s < top[0].s * 0.45) break; seen.add(x.d.src); top.push(x); if (top.length === 2) break; }
     if (!top.length) {
       answer.innerHTML = '<div class="result"><p>Nothing on this page matches that yet. Try asking about Google, RAG, React, Kafka or MealMate, or email me at <a href="mailto:rnarrasree@gmail.com">rnarrasree@gmail.com</a>.</p></div>';
       return;
     }
-    answer.innerHTML = top.map(({d}) =>
-      '<div class="result"><p>' + highlight(d.text, expanded) + '</p><span class="src">Found in <a href="#' + d.anchor + '">' + esc(d.src) + '</a></span></div>'
-    ).join('');
+    answer.innerHTML = top.map(({d}) => explain(d, expanded)).join('');
   }
   const input = document.getElementById('q');
   document.getElementById('ask-form').addEventListener('submit', e => { e.preventDefault(); if (input.value.trim()) ask(input.value); });
