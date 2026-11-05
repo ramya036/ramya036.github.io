@@ -1,634 +1,529 @@
 <!doctype html>
-<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->s
-<!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en-gb" class="no-js">
-<!--<![endif]-->
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!--[if lt IE 9]> 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <![endif]-->
-    <title>Ramya sree</title>
-    <meta name="description" content="">
-    <meta name="author" content="WebThemez">
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lte IE 8]>
-		<script type="text/javascript" src="http://explorercanvas.googlecode.com/svn/trunk/excanvas.js"></script>
-	<![endif]-->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" />
-    <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/da-slider.css" />
-    <!-- Owl Carousel Assets -->
-    <link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- Font Awesome -->
-    <link href="font/css/font-awesome.min.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ramya Sree Narra — Full-Stack & AI Engineer</title>
+<meta name="description" content="Ramya Sree Narra builds full-stack products and the AI inside them. Ex-Google SWE intern, MS CS at Georgia State. Open to full-stack and AI engineering roles.">
+<meta property="og:title" content="Ramya Sree Narra — Full-Stack & AI Engineer">
+<meta property="og:description" content="I build full-stack products and the AI inside them.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234F46E5'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='30' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F5FB; --surface:#FFFFFF; --ink:#1B1E3A; --muted:#5E6385; --line:#E3E1F0;
+  --accent:#4F46E5; --accent-soft:#ECEAFE; --mark:#FFC857; --mark-ink:#1B1E3A;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --radius-lg:22px; --radius-sm:10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#13152B; --surface:#1B1E3A; --ink:#ECEBF7; --muted:#A3A6C4; --line:#2C3054;
+    --accent:#9A93FF; --accent-soft:#262A55; --mark:#FFC857; --mark-ink:#1B1E3A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#13152B; --surface:#1B1E3A; --ink:#ECEBF7; --muted:#A3A6C4; --line:#2C3054;
+  --accent:#9A93FF; --accent-soft:#262A55; --mark:#FFC857; --mark-ink:#1B1E3A; color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:16px;top:12px;background:var(--surface);padding:8px 12px;z-index:10}
+
+/* Top bar */
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.bar.scrolled{border-bottom-color:var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font:800 20px/1 var(--display);text-decoration:none;letter-spacing:-.02em}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px}
+.nav a:hover{color:var(--ink)}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.theme svg{width:18px;height:18px}
+
+/* Hero */
+.hero{padding:64px 0 40px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width: 1000px){.hero{grid-template-columns:1fr;gap:0}}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--muted);margin:0 0 22px}
+.status i{width:9px;height:9px;border-radius:50%;background:#22A06B;box-shadow:0 0 0 4px color-mix(in srgb,#22A06B 22%,transparent)}
+h1{font:800 clamp(52px,8.4vw,108px)/.92 var(--display);letter-spacing:-.045em;margin:0;max-width:11ch}
+h1 span{display:block}
+.lede{font-size:clamp(19px,2.2vw,24px);line-height:1.45;max-width:30ch;text-wrap:balance;margin:26px 0 0;color:var(--ink)}
+.lede-sub{color:var(--muted);max-width:60ch;margin:14px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink);transition:background .15s,color .15s}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:not(.primary):hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:18px;height:18px}
+
+/* Ask */
+.ask{margin-top:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;box-shadow:0 30px 60px -40px color-mix(in srgb,var(--accent) 45%,transparent)}
+.ask h2{font:600 24px/1.2 var(--display);margin:0 0 4px;letter-spacing:-.01em}
+.ask p.hint{margin:0 0 18px;color:var(--muted);font-size:15px}
+.ask form{display:flex;gap:10px}
+.ask input{flex:1;min-width:0;font:inherit;font-size:17px;padding:14px 18px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink)}
+.ask input:focus{outline:none;border-color:var(--accent)}
+.ask button[type=submit]{font:600 15px var(--body);padding:0 22px;border-radius:14px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.chips button{font:500 14px var(--body);color:var(--ink);background:var(--accent-soft);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
+.chips button:hover{background:var(--accent);color:#fff}
+.answer{margin-top:22px;min-height:0}
+.answer:empty{display:none}
+.result{border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin-top:14px}
+.result:first-child{margin-top:0}
+.result p{margin:0;max-width:72ch}
+.result .src{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+.result .src a{color:var(--accent);text-decoration:none;font-weight:600}
+mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2px}
+.note{margin:18px 0 0;font-size:13px;color:var(--muted)}
+
+/* Sections */
+section{padding:88px 0 0}
+h2.title{font:800 clamp(34px,5vw,52px)/1 var(--display);letter-spacing:-.035em;margin:0 0 36px}
+.intro{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start}
+.intro p{margin:0 0 16px;max-width:62ch}
+.facts{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts span:first-child{color:var(--muted)}
+.facts span:last-child{text-align:right;font-weight:500}
+
+/* Timeline */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:180px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.job{display:grid;grid-template-columns:180px 1fr;gap:0 40px;padding:0 0 44px;position:relative}
+.job::before{content:"";position:absolute;left:174px;top:9px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--accent)}
+.job .when{font-size:14px;color:var(--muted);padding-top:3px;padding-right:24px}
+.job h3{font:600 23px/1.2 var(--display);margin:0;letter-spacing:-.01em}
+.job .role{color:var(--muted);margin:4px 0 12px;font-size:15px}
+.job ul{margin:0;padding-left:18px}
+.job li{margin:6px 0;max-width:68ch}
+.job li strong{color:var(--accent);font-weight:600}
+.stack{margin:12px 0 0;font-size:14px;color:var(--muted)}
+
+/* Projects */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:36px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);margin-bottom:24px}
+.feature:nth-of-type(even) .demo{order:-1}
+.feature h3{font:800 34px/1 var(--display);letter-spacing:-.03em;margin:0 0 6px}
+.feature .kind{color:var(--accent);font-weight:600;font-size:15px;margin:0 0 14px}
+.feature p{margin:0 0 12px}
+.feature .links{display:flex;gap:18px;margin-top:16px}
+.feature .links a{font-weight:600;color:var(--accent);text-decoration:none}
+.feature .links a:hover{text-decoration:underline}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.tags li{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--accent-soft)}
+.demo{border-radius:16px;background:var(--paper);border:1px solid var(--line);padding:20px;font-size:14px}
+.demo .q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.demo pre{margin:12px 0 0;white-space:pre-wrap;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--ink);color:var(--paper);border-radius:12px;padding:14px;min-height:96px}
+.demo table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+.demo td,.demo th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps li{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--muted);transition:all .3s}
+.steps li b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:var(--line);color:var(--ink);flex:none}
+.steps li.on{color:var(--ink);border-color:var(--accent)}
+.steps li.on b{background:var(--accent);color:#fff}
+.more{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--line)}
+.more li{display:grid;grid-template-columns:240px 1fr auto;gap:24px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+.more a.name{font:600 19px var(--display);text-decoration:none}
+.more a.name:hover{color:var(--accent)}
+.more span.tech{font-size:14px;color:var(--muted);white-space:nowrap}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.skills h3{font:600 18px var(--display);margin:0 0 10px}
+.skills p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+
+/* Education */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.edu div{padding:24px;border-radius:var(--radius-sm);border:1px solid var(--line)}
+.edu h3{font:600 20px/1.25 var(--display);margin:0 0 6px}
+.edu p{margin:0;color:var(--muted);font-size:15px}
+
+/* Contact */
+.contact{padding:110px 0 60px}
+.contact p{max-width:46ch;color:var(--muted);margin:0 0 20px}
+.mail{display:inline-block;font:800 clamp(30px,6.5vw,72px)/1 var(--display);letter-spacing:-.04em;text-decoration:none;border-bottom:4px solid var(--accent);padding-bottom:6px;word-break:break-all}
+.mail:hover{color:var(--accent)}
+.socials{display:flex;gap:22px;margin-top:30px}
+.socials a{font-weight:600;text-decoration:none;color:var(--muted)}
+.socials a:hover{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px}
+
+/* Load sequence: one orchestrated moment */
+.reveal{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}.d5{animation-delay:.56s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{animation:none;opacity:1;transform:none}
+  .steps li{transition:none}
+}
+
+@media (max-width: 1000px){.ask{margin-top:48px}}
+@media (max-width: 860px){
+  .nav a:not(.keep){display:none}
+  .intro,.feature,.edu{grid-template-columns:1fr}
+  .feature:nth-of-type(even) .demo{order:0}
+  .feature{padding:24px}
+  .skills{grid-template-columns:1fr 1fr}
+  .timeline::before{left:6px}
+  .job{grid-template-columns:1fr;padding-left:32px}
+  .job::before{left:0}
+  .job .when{padding:0 0 4px}
+  .more li{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width: 520px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .hero{padding-top:44px}
+  .ask{padding:20px}
+  .ask form{flex-direction:column}
+  .ask button[type=submit]{padding:13px}
+  .skills{grid-template-columns:1fr}
+}
+</style>
 </head>
-
 <body>
-    <header class="header">
-        <div class="container">
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="navbar-brand scroll-top logo"><b>Narra Ramya Sree</b></a>
-                </div>
-                <!--/.navbar-header-->
-                <div id="main-nav" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav" id="mainNav">
-                        <li class="active"><a href="#home" class="scroll-link">Home page</a></li>
-                        <li><a href="#aboutUs" class="scroll-link">About me</a></li>
-                        <li><a href="#skills" class="scroll-link">my Skills</a></li>
-                        <li><a href="#experience" class="scroll-link">my Experience</a></li>
-                        <li><a href="#portfolio" class="scroll-link">Portfolio</a></li>
-                        <li><a href="#contactUs" class="scroll-link">Contact me</a></li>
-                    </ul>
-                </div>
-                <!--/.navbar-collapse-->
-            </nav>
-            <!--/.navbar-->
-        </div>
-        <!--/.container-->
-    </header>
-    <!--/.header-->
-    <div id="#top"></div>
-    <section id="home">
-        <div class="banner-container">
-            <img src="images/pic2.jpg" alt="banner" />
-            <div class="container banner-content">
-                <div id="da-slider" class="da-slider">
-                    <div class="da-slide">
-                        <h2>Webdesigner</h2>
-                        <p>demands for web technology has been constantly increasing</p>
-                        <div class="da-img"></div>
-                    </div>
-                    <div class="da-slide">
-                        <h2>programmer</h2>
-                        <p>programmer </p>
-                        <div class="da-img"></div>
-                    </div>
-                    <div class="da-slide">
-                        <h2>android developer</h2>
-                        <p>android</p>
-                        <div class="da-img"></div>
-                    </div>
-                    <div class="da-slide">
-                        <h2>JavaScript/jQuery</h2>
-                        <p>jQuery: Write Less, Do More...</p>
-                        <div class="da-img"></div>
-                    </div>
-				<!--  <nav class="da-arrows">
-                        <span class="da-arrows-prev"></span>
-                        <span class="da-arrows-next"></span>
-                    </nav> -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="introText">
-        <div class="container">
-            <div class="text-center">
-            <h1>I am  technical student, </h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium. Cras posuere dolor risus. Pellentesque elementum ultricies quam, sit amet rhoncus nisl viverra in. Cras imperdiet nisi a euismod molestie. Ut a metus arcu. Pellentesque feugiat dictum erat. Nulla vehicula condimentum purus, quis imperdiet nisl ultricies eleifend. Nulla quis rhoncus risus. Ut vel vehicula urna.</p>
-            </div>
-        </div>
+<a class="skip" href="#main">Skip to content</a>
 
-    </section>
-    <!--About-->
-    <section id="aboutUs" class="secPad">
-        <div class="container">
-            <div class="heading text-center">
-                <!-- Heading -->
-                <h2>Iam ramya sree.iam a student in gptwgl</h2>
-                <p>I am from warangal.I have completed my 10th in "FATIMA GIRLS HIGH SCHOOL".I got an agregate 9.3 GPA.Now iam studying in gptwgl. </p>
-            </div>
-            <div class="row">
-                <!-- item -->
-                <div class="col-md-4 text-center tileBox">
-                   <div class="txtHead"> <i class="fa fa-desktop"></i>
-                    <h3>Responsive <span class="id-color">Design</span></h3></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium.</p>
-                </div>
-                <!-- end: -->
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">Ramya Sree Narra</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a class="keep" href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch color theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
 
-                <!-- item -->
-                <div class="col-md-4 text-center tileBox">
-                    <div class="txtHead"><i class="fa fa-css3"></i>
-                    <h3>HTML5/CSS3 <span class="id-color">Dev</span></h3></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium.</p>
-                </div>
-                <!-- end: -->
-
-                <!-- item -->
-                <div class="col-md-4 text-center tileBox">
-                    <div class="txtHead"><i class="fa fa-lightbulb-o"></i>
-                    <h3>JavaScript <span class="id-color">jQuery</span></h3></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum erat et neque tincidunt volutpat. Cras eget augue id dui varius pretium.</p>
-                </div>
-                <!-- end: -->
-            </div>
-        </div>
-    </section>
-    <!--Quote-->
-    <section id="quote" class="bg-parlex">
-        <div class="parlex-back">
-            <div class="container secPad text-center">
-				<h2>If I asked people what they wanted, they would have said ‘Faster Horses’.</h2><h3>-Henry Ford</h3>
-            </div>
-            <!--/.container-->
-        </div>
-    </section>
-    
-    <!--Skills-->
-    <section id="skills" class="secPad white">
-    	<div class="container">
-        <div class="heading text-center">
-                <!-- Heading -->
-                <h2>My Skills</h2>
-                <p></p>
-            </div>
-        	<div class="row">
-                <div class="col-sm-6">
-                    <h2>Programming <strong>Skills</strong></h2>
-                    
-                    <div class="row">
-                        <div class="col-md-2 skilltitle">c/c++</div>
-                        <div class="col-md-8">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-                                    <span class="sr-only">90% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 skilltitle">java</div>
-                        <div class="col-md-8">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-                                    <span class="sr-only">100% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 skilltitle">android</div>
-                        <div class="col-md-8">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                    <span class="sr-only">80% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					</div>
-                    
-					
-                <div class="col-sm-6">
-                    <h2>Designing <strong>Skills</strong></h2>
-                  
-                    <div class="row">
-                        <div class="col-md-2 skilltitle">Photoshop</div>
-                        <div class="col-md-8">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-                                    <span class="sr-only">90% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					
-					
-                    <div class="row">
-                        <div class="col-md-2 skilltitle">html/css</div>
-                        <div class="col-md-8">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                    <span class="sr-only">80% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 skilltitle">javascript</div>
-                        <div class="col-md-8">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
-                                    <span class="sr-only">75% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </section>
-    
-    <!--Experience-->
-    <section id="experience" class="secPad">
-    	<div class="container">     
-           <div class="heading text-center">
-                <!-- Heading -->
-                <h2>Professional Experience</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-            </div>
-        <div id="timeline"><div class="row timeline-movement timeline-movement-top">
-        <div class="timeline-badge timeline-future-movement">
-            <a href="#">
-                <span class="glyphicon glyphicon-plus"></span>
-            </a>
-        </div>
-        <div class="timeline-badge timeline-filter-movement">
-            <a href="#">
-                <span class="glyphicon glyphicon-time"></span>
-            </a>
-        </div>
-    
-    </div>
-    <div class="row timeline-movement">
-    
-        <div class="timeline-badge">
-            <span class="timeline-balloon-date-day">Feb</span>
-            <span class="timeline-balloon-date-month">2014</span>
-        </div>
-    
-    
-        <div class="col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-11">
-                    <div class="timeline-panel credits">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">Mussum ipsum cacilds</span></li>
-                            <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                            <li><p><small class="text-muted"> 18/02/2014 - Present</small></p> </li>
-                        </ul>
-                    </div>
-    
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
-                    <div class="timeline-panel debits">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">Mussum ipsum cacilds</span></li>
-                            <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                            <li><p><small class="text-muted"> 18/02/2014 - Present</small></p> </li>
-                        </ul>
-                    </div>
-    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!--due -->
-    
-    <div class="row timeline-movement">
-    
-    
-        <div class="timeline-badge">
-            <span class="timeline-balloon-date-day">Mar</span>
-            <span class="timeline-balloon-date-month">2013</span>
-        </div>
-    
-        <div class="col-sm-offset-6 col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
-                    <div class="timeline-panel debits">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">Mussum ipsum cacilds</span></li>
-                            <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                            <li><p><small class="text-muted"> 10/03/2013 - 18/02/2014</small></p> </li>
-                        </ul>
-                    </div>
-    
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-11">
-                    <div class="timeline-panel credits">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">Mussum ipsum cacilds</span></li>
-                            <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                            <li><p><small class="text-muted"> 10/03/2013 - 18/02/2014</small></p> </li>
-                        </ul>
-                    </div>
-    
-                </div>
-            </div>
-        </div>
-    
-    
-    </div>
-    <div class="row timeline-movement">
-    
-    
-        <div class="timeline-badge">
-            <span class="timeline-balloon-date-day">Jan</span>
-            <span class="timeline-balloon-date-month">2010</span>
-        </div>
-    
-        <div class="col-sm-offset-6 col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
-                    <div class="timeline-panel debits">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">Mussum ipsum cacilds</span></li>
-                            <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                            <li><p><small class="text-muted"> 11/01/2010 - 10/03/2013</small></p> </li>
-                        </ul>
-                    </div>
-    
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-11">
-                    <div class="timeline-panel credits">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">Mussum ipsum cacilds</span></li>
-                            <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                            <li><p><small class="text-muted"> 11/01/2010 - 10/03/2013</small></p> </li>
-                        </ul>
-                    </div>
-    
-                </div>
-            </div>
-        </div>
-    
-    
+<main id="main">
+<div class="wrap" id="top">
+  <div class="hero">
+    <div class="hero-text">
+    <p class="status reveal d1"><i aria-hidden="true"></i>Open to full-stack and AI roles from 2027</p>
+    <h1 class="reveal d2"><span>Ramya</span><span>Sree Narra</span></h1>
+    <p class="lede reveal d3">I build full-stack products and the AI inside them.</p>
+    <p class="lede-sub reveal d3">Software engineer with internships at Google, Skillz and Honeywell, two years at Verizon, and an MS in Computer Science at Georgia State. I like work that runs from the React screen down to the model and the database.</p>
+    <div class="actions reveal d4">
+      <a class="btn primary" href="mailto:rnarrasree@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/ramya036" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/ramyasreenarra" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     </div>
+
+    <div class="ask reveal d5" aria-labelledby="ask-title">
+      <h2 id="ask-title">Ask about my work</h2>
+      <p class="hint">Type a question and this page finds the best matching part of my experience.</p>
+      <form id="ask-form" autocomplete="off">
+        <label for="q" class="skip">Your question</label>
+        <input id="q" name="q" type="text" placeholder="What did you build at Google?" maxlength="200">
+        <button type="submit">Ask</button>
+      </form>
+      <ul class="chips" aria-label="Example questions">
+        <li><button type="button">What AI work have you done?</button></li>
+        <li><button type="button">Have you used React?</button></li>
+        <li><button type="button">Experience with Kafka?</button></li>
+        <li><button type="button">Tell me about MealMate</button></li>
+      </ul>
+      <div class="answer" id="answer" aria-live="polite"></div>
+      <p class="note">This is a small keyword-retrieval search over the text on this page, the same idea as the retrieval step in AskDB. It runs in your browser and sends nothing anywhere.</p>
     </div>
-    
-    </section>
-    
-  
-   <!--Portfolio-->
-    <section id="portfolio" class="page-section section appear clearfix secPad">
-        <div class="container">
+  </div>
+</div>
 
-            <div class="heading text-center">
-                <!-- Heading -->
-                <h2>Portfolio</h2>
-                <p>At lorem Ipsum available, but the majority have suffered alteration in some form by injected humour.</p>
-            </div>
+<section id="about">
+  <div class="wrap intro">
+    <div>
+      <h2 class="title">About</h2>
+      <p>I'm a software engineer who works across the stack. At Verizon I spent two years building event-driven Kafka systems, an Elasticsearch observability platform and a drag-and-drop page builder in React. Since then my work has moved toward applied AI: retrieval-augmented question answering over clinical records at Georgia State, and an AI agent for production incident analysis at Google.</p>
+      <p>I care about systems that are fast, observable and easy for other people to use, and about measuring whether a change actually helped.</p>
+    </div>
+    <ul class="facts" aria-label="Quick facts">
+      <li><span>Focus</span><span>Full-stack, LLM and RAG systems</span></li>
+      <li><span>Most recent</span><span>Google, SWE Intern</span></li>
+      <li><span>Education</span><span>MS CS, Georgia State, Dec 2026</span></li>
+      <li><span>Location</span><span>Atlanta, GA</span></li>
+      <li><span>Email</span><span><a href="mailto:rnarrasree@gmail.com">rnarrasree@gmail.com</a></span></li>
+    </ul>
+  </div>
+</section>
 
-            <div class="row">
-                <nav id="filter" class="col-md-12 text-center">
-                    <ul>
-                        <li><a href="#" class="current btn-theme btn-small" data-filter="*">All</a></li>
-                        <li><a href="#" class="btn-theme btn-small" data-filter=".webdesign">Web Design</a></li>
-                        <li><a href="#" class="btn-theme btn-small" data-filter=".photography">Photography</a></li>
-                        <li><a href="#" class="btn-theme btn-small" data-filter=".print">Print</a></li>
-                    </ul>
-                </nav>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="portfolio-items isotopeWrapper clearfix" id="3">
-
-                            <article class="col-sm-4 isotopeItem webdesign">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img1.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img1.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem photography">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img2.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img2.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-
-                            <article class="col-sm-4 isotopeItem photography">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img3.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img3.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem print">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img4.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img4.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem photography">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img5.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img5.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem webdesign">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img6.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img6.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem print">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img7.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img7.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem photography">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img8.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img8.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="col-sm-4 isotopeItem print">
-                                <div class="portfolio-item">
-                                    <img src="images/portfolio/img9.jpg" alt="" />
-                                    <div class="portfolio-desc align-center">
-                                        <div class="folio-info">
-                                            <a href="images/portfolio/img9.jpg" class="fancybox">
-                                                <h5>Project Name</h5>
-                                                <i class="fa fa-arrows-alt fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                    </div>
-
-
-                </div>
-            </div>
-
+<section id="experience">
+  <div class="wrap">
+    <h2 class="title">Experience</h2>
+    <ol class="timeline">
+      <li class="job" data-src="Experience, Google">
+        <div class="when">May – Aug 2026<br>Seattle</div>
+        <div>
+          <h3>Google</h3>
+          <p class="role">Software Engineering Intern</p>
+          <ul>
+            <li>Built an AI-powered production investigation agent that automates incident analysis and debugging, cutting investigation time by <strong>60%</strong>.</li>
+            <li>Cut SWAN policy update latency from 5 days to immediate rollouts by decoupling policy config from binary releases and integrating with CDPush, with zero-downtime updates across <strong>130+ GCE zones</strong>.</li>
+            <li>Proposed and built a developer workflow tool that summarizes policy changes, reducing review time by about <strong>80%</strong>.</li>
+          </ul>
+          <p class="stack">GCP, AI agents, C++, Python, Bazel, CDPush, Protocol Buffers</p>
         </div>
-    </section>
-
-	<!--Contact -->
-    <section id="contactUs" class="page-section secPad">
-        <div class="container">
-
-            <div class="row">
-                <div class="heading text-center">
-                    <!-- Heading -->
-                    <h2>Let's Keep In Touch!</h2>
-                    <p>Thank you for visiting out my profile. If you would like to get into contact with me, please fill out the form below.</p>
-                </div>
-            </div>
-
-            <div class="row mrgn30">
-
-                <form method="post" action="" id="contactfrm" role="form">
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="name">name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="ramya sree" title="Please enter your name (at least 2 characters)">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="rnarrasree@gmail.com" title="Please enter your email">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="comments">Comments</label>
-                            <input type="textarea" name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Enter your message…" title="Please enter your message (at least 10 characters)">
-                   </div>
-                        <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Submit</button>
-                        <div class="result">
-						</div>
-                    </div>
-                </form>
-                <div class="col-sm-4">
-                    <h4>Address:</h4>
-                    <address>
-                        H-no:2-10-128<br>
-                        waddepally ,near pingli clg <br>
-                        hanamkonda,warangal
-                        <br>
-                    </address>
-					
-                  <h4>Phone no:</h4>
-                    <address>
-                        7032632512<br>
-                    </address>  
-					
-				 <h4>email id:</h4>
-                    
-                        rnarrasree@gmail.com<br>
-                                  
-                </div>
-            </div>
+      </li>
+      <li class="job" data-src="Experience, Georgia State University">
+        <div class="when">Jan 2025 – now<br>Atlanta</div>
+        <div>
+          <h3>Georgia State University</h3>
+          <p class="role">Graduate Research Assistant</p>
+          <ul>
+            <li>Built a RAG-based clinical question answering system with transformer embeddings and FAISS over <strong>120K+ records</strong>, improving retrieval relevance by <strong>45%</strong> over keyword search.</li>
+            <li>Developed NER, relation extraction and summarization pipelines with BERT, raising F1 from <strong>0.72 to 0.89</strong> and cutting document review time by 60%.</li>
+          </ul>
+          <p class="stack">RAG, LangChain, FastAPI, AWS, PostgreSQL, PyTorch, Hugging Face, FAISS, Docker</p>
         </div>
-        <!--/.container-->
-    </section>
-    <footer>
-        <div class="container">
-            <div class="social text-center">
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-flickr"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
-            </div>
-
-            <div class="clear"></div>
-            <!--CLEAR FLOATS-->
+      </li>
+      <li class="job" data-src="Experience, Skillz">
+        <div class="when">Jun – Aug 2025<br>Nevada</div>
+        <div>
+          <h3>Skillz</h3>
+          <p class="role">Software Engineering Intern</p>
+          <ul>
+            <li>Designed and launched configurable entry limits and a live events form across iOS, Android and web, driving <strong>26K+ player entries</strong> and a 10% increase in monetized events.</li>
+            <li>Shipped Spring Boot REST APIs with Redis caching for high-concurrency traffic at about <strong>200ms</strong> average latency.</li>
+          </ul>
+          <p class="stack">Java, Spring Boot, MySQL, React Native, Redux, Redis</p>
         </div>
-    </footer>
-    <!--/.page-section-->
-    <section class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    Copyright 2018 | All Rights Reserved by me</a>
-                </div>
-            </div>
-            <!-- / .row -->
+      </li>
+      <li class="job" data-src="Experience, Verizon">
+        <div class="when">Jul 2022 – Aug 2024<br>Hyderabad</div>
+        <div>
+          <h3>Verizon</h3>
+          <p class="role">Software Development Engineer II</p>
+          <ul>
+            <li>Architected fault-tolerant, event-driven Kafka systems between telecom catalog services with <strong>99%</strong> message delivery accuracy.</li>
+            <li>Designed an observability platform on Elasticsearch for centralized log search, saving about <strong>4 hours</strong> per debugging cycle.</li>
+            <li>Led a drag-and-drop page builder in React and Redux that let non-technical users build pages and cut coding time by <strong>70%</strong>.</li>
+          </ul>
+          <p class="stack">Java, Spring Boot, Spring Reactive, React, TypeScript, Kafka, MySQL, Kibana</p>
         </div>
-    </section>
-    <a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>
+      </li>
+      <li class="job" data-src="Experience, Arcesium">
+        <div class="when">Feb – Jun 2022<br>Hyderabad</div>
+        <div>
+          <h3>Arcesium</h3>
+          <p class="role">Software Reliability Engineer Intern</p>
+          <ul>
+            <li>Built GitLab CI pipelines in Python that catch dependency cycles and format errors, saving about <strong>10 hours a week</strong> of manual review.</li>
+            <li>Containerized Python microservices with Docker, halving setup time.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job" data-src="Experience, Honeywell">
+        <div class="when">Apr – Jun 2021<br>Hyderabad</div>
+        <div>
+          <h3>Honeywell</h3>
+          <p class="role">Software Engineer Intern</p>
+          <ul>
+            <li>Refactored legacy components and added cross-browser support to the building management app, cutting browser-specific issues by <strong>40%</strong>.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-    <!--[if lte IE 8]><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><![endif]-->
-    <script src="js/modernizr-latest.js"></script>
-    <script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/jquery.isotope.min.js" type="text/javascript"></script>
-    <script src="js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-    <script src="js/jquery.nav.js" type="text/javascript"></script>
-    <script src="js/jquery.cslider.js" type="text/javascript"></script>
-    <script src="js/custom.js" type="text/javascript"></script>
-    <script src="js/owl-carousel/owl.carousel.js"></script>
+<section id="projects">
+  <div class="wrap">
+    <h2 class="title">Projects</h2>
+
+    <article class="feature" data-src="Projects, AskDB">
+      <div>
+        <p class="kind">AI project: natural language to SQL</p>
+        <h3>AskDB</h3>
+        <p>Ask a database a question in plain English and get the SQL and the results back. A FAISS index retrieves only the relevant tables and similar solved examples, Gemini writes the query, and it runs on a read-only connection. If SQLite rejects it, the error goes back to the model for one fix.</p>
+        <ul class="tags"><li>Python</li><li>FastAPI</li><li>FAISS</li><li>RAG</li><li>Gemini API</li><li>SQLite</li></ul>
+        <div class="links"><a href="https://github.com/ramya036/askdb" target="_blank" rel="noopener">View code on GitHub</a></div>
+      </div>
+      <div class="demo" aria-label="AskDB example">
+        <div class="q" id="askdb-q">How many patients live in each state?</div>
+        <pre id="askdb-sql" aria-live="off"></pre>
+        <table id="askdb-rows" hidden><tr><th>state</th><th>patient_count</th></tr><tr><td>GA</td><td>81</td></tr><tr><td>TX</td><td>42</td></tr><tr><td>WA</td><td>39</td></tr></table>
+      </div>
+    </article>
+
+    <article class="feature" data-src="Projects, MealMate">
+      <div>
+        <p class="kind">Full-stack project: food ordering and payments</p>
+        <h3>MealMate</h3>
+        <p>A React and Spring Boot ordering platform with JWT login, customer and admin roles, and Stripe payments. Prices are always computed on the server, and an order is only marked paid when Stripe's signed webhook confirms it, so retries never double-charge.</p>
+        <ul class="tags"><li>Java</li><li>Spring Boot</li><li>React</li><li>MySQL</li><li>Stripe</li><li>Docker</li></ul>
+        <div class="links"><a href="https://github.com/ramya036/mealmate" target="_blank" rel="noopener">View code on GitHub</a></div>
+      </div>
+      <div class="demo" aria-label="MealMate order lifecycle">
+        <ol class="steps" id="steps">
+          <li><b>1</b>Order placed, priced on the server</li>
+          <li><b>2</b>Stripe payment confirmed by webhook</li>
+          <li><b>3</b>Kitchen preparing</li>
+          <li><b>4</b>Out for delivery</li>
+          <li><b>5</b>Delivered</li>
+        </ol>
+      </div>
+    </article>
+
+    <ul class="more" aria-label="More projects">
+      <li data-src="Projects, Object detection"><a class="name" href="https://github.com/ramya036/object-detection-opencv" target="_blank" rel="noopener">Object detection</a><span>Finds and labels 80 kinds of objects in photos and live webcam video using a pretrained SSD MobileNet model.</span><span class="tech">Python, OpenCV</span></li>
+      <li data-src="Projects, Multilingual translator"><a class="name" href="https://github.com/ramya036/multilingual-translator" target="_blank" rel="noopener">Multilingual translator</a><span>Translates and transliterates typed text, PDFs or speech, and reads the result aloud.</span><span class="tech">Python, Tkinter</span></li>
+      <li data-src="Projects, Nest Point"><a class="name" href="https://github.com/ramya036/nestpoint-real-estate" target="_blank" rel="noopener">Nest Point</a><span>Real estate listings with separate buyer, seller and admin dashboards and searchable listings.</span><span class="tech">PHP, MySQL</span></li>
+      <li data-src="Projects, Voice assistant"><a class="name" href="https://github.com/ramya036/voice-assistant" target="_blank" rel="noopener">Voice assistant</a><span>Listens for spoken commands to open sites, search Wikipedia, find places and tell the time.</span><span class="tech">Python</span></li>
+      <li data-src="Projects, React apps"><a class="name" href="https://github.com/ramya036/react-produce-filter" target="_blank" rel="noopener">React apps</a><span>A searchable, filterable list and a <a href="https://github.com/ramya036/tic-tac-toe-react" target="_blank" rel="noopener">tic-tac-toe game</a> against the computer.</span><span class="tech">React</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="title">Skills</h2>
+    <div class="skills">
+      <div data-src="Skills, AI and ML"><h3>AI and ML</h3><p>LLMs, RAG, AI agents, LangChain, FAISS, Transformers, Hugging Face, PyTorch, TensorFlow, scikit-learn, OpenCV</p></div>
+      <div data-src="Skills, Backend"><h3>Backend</h3><p>Java, Python, C++, Spring Boot, Spring Reactive, FastAPI, REST APIs, Kafka, Redis, MySQL, PostgreSQL, Elasticsearch, microservices</p></div>
+      <div data-src="Skills, Frontend"><h3>Frontend</h3><p>React, Redux, TypeScript, JavaScript, Angular, React Native, HTML, CSS</p></div>
+      <div data-src="Skills, Cloud and DevOps"><h3>Cloud and DevOps</h3><p>GCP, AWS, Docker, CI/CD, GitLab CI, Jenkins, Linux, Git, Bazel</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="title">Education</h2>
+    <div class="edu">
+      <div data-src="Education, Georgia State University"><h3>MS in Computer Science</h3><p>Georgia State University, Aug 2024 – Dec 2026, GPA 3.8</p></div>
+      <div data-src="Education, JNTU"><h3>Bachelor's in Computer Science</h3><p>Jawaharlal Nehru Technological University, 2019 – 2022, GPA 3.8</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="title">Let's talk</h2>
+    <p>I'm looking for full-time full-stack and AI engineering roles starting in 2027. The fastest way to reach me is email.</p>
+    <a class="mail" href="mailto:rnarrasree@gmail.com">rnarrasree@gmail.com</a>
+    <div class="socials">
+      <a href="https://github.com/ramya036" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/ramyasreenarra" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Ramya Sree Narra, 2026</div>
+</footer>
+
+<script>
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Theme toggle (remembered per visitor)
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  });
+
+  // Top bar border on scroll
+  const bar = document.getElementById('bar');
+  addEventListener('scroll', () => bar.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+  // ---- Ask about my work: tiny TF-IDF retrieval over this page ----
+  const STOP = new Set('a an and are at be by can could did do does for from had has have how i in is it its me my of on or so tell that the their them this to was what when where which who why with you your about any ever done work worked use used using'.split(' '));
+  const SYN = {
+    ai:['llm','rag','agent','ml','transformers','gemini','faiss','nlp','bert'], ml:['ai','pytorch','tensorflow','opencv'],
+    llm:['rag','gemini','langchain','ai'], genai:['llm','rag','ai'], frontend:['react','redux','typescript','angular'],
+    backend:['spring','java','fastapi','kafka','redis','apis'], java:['spring'], python:['fastapi','pytorch'],
+    cloud:['gcp','aws','docker'], database:['mysql','postgresql','sql','sqlite'], sql:['mysql','sqlite','postgresql'],
+    payments:['stripe'], devops:['ci','docker','jenkins','gitlab'], school:['university','ms','education'],
+    study:['university','education'], degree:['ms','bachelor','education'], google:['gcp'], internship:['intern']
+  };
+  const norm = s => s.toLowerCase().replace(/[^a-z0-9+#.\s-]/g,' ');
+  const stem = w => w.replace(/(ing|ed|es|s)$/,'');
+  const tokens = s => norm(s).split(/[\s.\-]+/).filter(w => w && !STOP.has(w)).map(stem);
+
+  const docs = [];
+  document.querySelectorAll('[data-src]').forEach(el => {
+    const src = el.dataset.src;
+    const anchor = el.closest('section')?.id || 'top';
+    const items = el.querySelectorAll('li:not(.tags li), p:not(.kind):not(.role):not(.stack)');
+    const head = (el.querySelector('h3')?.textContent || src) + ' ' + (el.querySelector('.role')?.textContent || '');
+    const stack = el.querySelector('.stack,.tags')?.textContent || '';
+    if (items.length) items.forEach(i => { if (i.closest('.tags')) return; docs.push({ text: i.textContent.trim(), ctx: head + ' ' + stack, src, anchor }); });
+    else docs.push({ text: [...el.children].map(c => c.textContent.trim()).filter(Boolean).join(': ').replace(/\s+/g,' '), ctx: head, src, anchor });
+  });
+  docs.forEach(d => { d.tok = tokens(d.text + ' ' + d.ctx); d.set = new Set(d.tok); });
+  const df = {}; docs.forEach(d => d.set.forEach(t => df[t] = (df[t]||0) + 1));
+  const idf = t => Math.log(1 + docs.length / (df[t] || docs.length));
+
+  const answer = document.getElementById('answer');
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function highlight(text, terms){
+    return esc(text).replace(/[A-Za-z0-9+#]+/g, w => terms.has(stem(w.toLowerCase())) ? '<mark>' + w + '</mark>' : w);
+  }
+  function ask(q){
+    let qt = tokens(q);
+    const expanded = new Set(qt);
+    qt.forEach(t => (SYN[t] || []).forEach(s => expanded.add(stem(s))));
+    const scored = docs.map(d => {
+      let s = 0; expanded.forEach(t => { if (d.set.has(t)) s += idf(t) * (qt.includes(t) ? 1.6 : 1); });
+      const inText = tokens(d.text).filter(t => expanded.has(t)).length;
+      return { d, s: s + inText * 0.4 };
+    }).filter(x => x.s > 0).sort((a,b) => b.s - a.s);
+    const seen = new Set(); const top = [];
+    for (const x of scored) { if (seen.has(x.d.src)) continue; seen.add(x.d.src); top.push(x); if (top.length === 2) break; }
+    if (!top.length) {
+      answer.innerHTML = '<div class="result"><p>Nothing on this page matches that yet. Try asking about Google, RAG, React, Kafka or MealMate, or email me at <a href="mailto:rnarrasree@gmail.com">rnarrasree@gmail.com</a>.</p></div>';
+      return;
+    }
+    answer.innerHTML = top.map(({d}) =>
+      '<div class="result"><p>' + highlight(d.text, expanded) + '</p><span class="src">Found in <a href="#' + d.anchor + '">' + esc(d.src) + '</a></span></div>'
+    ).join('');
+  }
+  const input = document.getElementById('q');
+  document.getElementById('ask-form').addEventListener('submit', e => { e.preventDefault(); if (input.value.trim()) ask(input.value); });
+  document.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => { input.value = b.textContent; ask(b.textContent); }));
+
+  // ---- AskDB demo: type the SQL once when it scrolls into view ----
+  const sql = "SELECT state, COUNT(*) AS patient_count\nFROM patients\nGROUP BY state\nORDER BY patient_count DESC;";
+  const pre = document.getElementById('askdb-sql'), rows = document.getElementById('askdb-rows');
+  function playSQL(){
+    if (reduced) { pre.textContent = sql; rows.hidden = false; return; }
+    let i = 0; const t = setInterval(() => { pre.textContent = sql.slice(0, ++i); if (i >= sql.length) { clearInterval(t); rows.hidden = false; } }, 22);
+  }
+  // ---- MealMate demo: step through the order lifecycle ----
+  const steps = [...document.querySelectorAll('#steps li')];
+  function playSteps(){
+    if (reduced) { steps.forEach(s => s.classList.add('on')); return; }
+    steps.forEach((s, i) => setTimeout(() => s.classList.add('on'), 450 * i));
+  }
+  const once = (el, fn) => {
+    if (!('IntersectionObserver' in window)) return fn();
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { fn(); io.disconnect(); } }, { threshold: .4 });
+    io.observe(el);
+  };
+  once(pre, playSQL); once(steps[0].parentElement, playSteps);
+})();
+</script>
 </body>
 </html>
