@@ -57,7 +57,8 @@ a{color:inherit}
 @media (max-width: 1000px){.hero{grid-template-columns:1fr;gap:0}}
 .status{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--muted);margin:0 0 22px}
 .status i{width:9px;height:9px;border-radius:50%;background:#22A06B;box-shadow:0 0 0 4px color-mix(in srgb,#22A06B 22%,transparent)}
-h1{font:800 clamp(52px,8.4vw,108px)/.92 var(--display);letter-spacing:-.045em;margin:0;max-width:11ch}
+h1{font:800 clamp(48px,6.4vw,96px)/.94 var(--display);letter-spacing:-.045em;margin:0}
+h1 span{white-space:nowrap}
 h1 span{display:block}
 .lede{font-size:clamp(19px,2.2vw,24px);line-height:1.45;max-width:30ch;text-wrap:balance;margin:26px 0 0;color:var(--ink)}
 .lede-sub{color:var(--muted);max-width:60ch;margin:14px 0 0}
@@ -120,8 +121,7 @@ h2.title{font:800 clamp(34px,5vw,52px)/1 var(--display);letter-spacing:-.035em;m
 .stack{margin:12px 0 0;font-size:14px;color:var(--muted)}
 
 /* Projects */
-.feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:36px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);margin-bottom:24px}
-.feature:nth-of-type(even) .demo{order:-1}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;padding:36px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);margin-bottom:24px}
 .feature h3{font:800 34px/1 var(--display);letter-spacing:-.03em;margin:0 0 6px}
 .feature .kind{color:var(--accent);font-weight:600;font-size:15px;margin:0 0 14px}
 .feature p{margin:0 0 12px}
@@ -187,7 +187,7 @@ h2.title{font:800 clamp(34px,5vw,52px)/1 var(--display);letter-spacing:-.035em;m
 /* Contact */
 .contact{padding:110px 0 60px}
 .contact p{max-width:46ch;color:var(--muted);margin:0 0 20px}
-.mail{display:inline-block;font:800 clamp(30px,6.5vw,72px)/1 var(--display);letter-spacing:-.04em;text-decoration:none;border-bottom:4px solid var(--accent);padding-bottom:6px;word-break:break-all}
+.mail{display:inline-block;font:800 clamp(26px,4.2vw,48px)/1.1 var(--display);letter-spacing:-.03em;text-decoration:none;border-bottom:3px solid var(--accent);padding-bottom:6px;word-break:break-all}
 .mail:hover{color:var(--accent)}
 .socials{display:flex;gap:22px;margin-top:30px}
 .socials a{font-weight:600;text-decoration:none;color:var(--muted)}
@@ -208,7 +208,6 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
 @media (max-width: 860px){
   .nav a:not(.keep){display:none}
   .intro,.feature,.edu{grid-template-columns:1fr}
-  .feature:nth-of-type(even) .demo{order:0}
   .feature{padding:24px}
   .skills{grid-template-columns:1fr 1fr}
   .timeline::before{left:6px}
@@ -283,9 +282,10 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
 </div>
 
 <section id="about">
-  <div class="wrap intro">
+  <div class="wrap">
+  <h2 class="title">About</h2>
+  <div class="intro">
     <div>
-      <h2 class="title">About</h2>
       <p>I'm a software engineer who works across the stack. At Verizon I spent two years building event-driven Kafka systems, an Elasticsearch observability platform and a drag-and-drop page builder in React. Since then my work has moved toward applied AI: retrieval-augmented question answering over clinical records at Georgia State, and an AI agent for production incident analysis at Google.</p>
       <p>I care about systems that are fast, observable and easy for other people to use, and about measuring whether a change actually helped.</p>
     </div>
@@ -296,6 +296,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
       <li><span>Location</span><span>Atlanta, GA</span></li>
       <li><span>Email</span><span><a href="mailto:rnarrasree@gmail.com">rnarrasree@gmail.com</a></span></li>
     </ul>
+  </div>
   </div>
 </section>
 
@@ -507,7 +508,7 @@ const PROJECTS = [
     tags: ["React", "Hooks", "Jest", "Testing Library"],
     code: "https://github.com/ramya036/tic-tac-toe-react",
     live: "tic-tac-toe/",
-    demo: { type: "live", url: "tic-tac-toe/", height: 560 },
+    demo: { type: "live", url: "tic-tac-toe/", height: 480 },
   },
   {
     name: "Produce finder",
@@ -516,7 +517,7 @@ const PROJECTS = [
     tags: ["React", "React Bootstrap", "Jest"],
     code: "https://github.com/ramya036/react-produce-filter",
     live: "produce-filter/",
-    demo: { type: "live", url: "produce-filter/", height: 560 },
+    demo: { type: "live", url: "produce-filter/", height: 480 },
   },
 ];
 
@@ -549,7 +550,7 @@ const PROJECTS = [
       demo._images = imgs;
     } else if (p.demo && p.demo.type === "live") {
       demo.classList.add("live");
-      demo.innerHTML = '<iframe loading="lazy" title="' + esc(p.name) + ' live demo" src="' + esc(p.demo.url) + '" style="height:' + (p.demo.height || 520) + 'px"></iframe>';
+      demo.innerHTML = '<iframe loading="lazy" title="' + esc(p.name) + ' live demo" src="' + esc(p.demo.url) + '?embed=1" style="height:' + (p.demo.height || 520) + 'px"></iframe>';
     }
     el.append(demo);
     list.append(el);
