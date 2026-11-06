@@ -464,13 +464,14 @@ const PROJECTS = [
   },
   {
     name: "Codebase Guide",
-    kind: "Agentic AI project: onboarding for any GitHub repo",
-    description: "Paste a GitHub link and ask how the code works. A tool-using agent lists files, searches and reads code, then answers with citations that link to the exact lines. Code verifies each citation (real file, real lines, lines it actually read, names that exist) and sends failures back for a fix. It also draws a dependency diagram from the imports.",
-    tags: ["Python", "FastAPI", "React", "Gemini API", "AI agents", "Mermaid"],
+    kind: "Agentic AI project: LangGraph + MCP onboarding agent",
+    description: "Paste a GitHub link and ask how the code works. A LangGraph agent explores the repo through tools on its own MCP server (list files, search, find definitions, read code), then answers with citations that link to the exact lines. A verify node checks each citation in code and routes failures back to the agent. The same MCP server plugs into Cursor or Claude Desktop.",
+    tags: ["Python", "LangGraph", "MCP", "FastAPI", "React", "Gemini API"],
     code: "https://github.com/ramya036/codebase-guide",
     demo: { type: "image", images: [
-      { src: "img/codebaseguide_answer.jpg", alt: "The agent's tool calls, a failed verification and the verified answer", label: "Agent steps", caption: "5 tool calls; caught an unread citation and a made-up function" },
+      { src: "img/codebaseguide_answer.jpg", alt: "LangGraph steps tagged agent, tools and verify, with a failed verification and a revision", label: "Agent steps", caption: "verify node caught an unread citation and a made-up function" },
       { src: "img/codebaseguide_citations.jpg", alt: "Answer citations showing the exact code lines", label: "Citations", caption: "every claim links to the lines it came from" },
+      { src: "img/codebaseguide_mcp.jpg", alt: "MCP config for adding the tools to an editor", label: "MCP", caption: "the same tools as an MCP server for your editor" },
     ] },
   },
   {
