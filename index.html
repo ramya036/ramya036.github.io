@@ -451,6 +451,29 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);f
    ====================================================================== */
 const PROJECTS = [
   {
+    name: "Job Copilot",
+    kind: "Agentic AI project: tailor a résumé to any job",
+    description: "Paste a job description and an agent pulls out its requirements, finds the résumé lines that back each one, and rewrites and reorders the résumé for that job. Code then checks every line against the original: a new number, technology or skill fails the check and the agent revises. Gaps are reported honestly, and the result downloads as Word or PDF.",
+    tags: ["Python", "FastAPI", "React", "Gemini API", "AI agents", "SSE"],
+    code: "https://github.com/ramya036/job-copilot",
+    demo: { type: "image", images: [
+      { src: "img/jobcopilot_steps.jpg", alt: "Agent steps: the self-check finds three invented claims and the agent revises", label: "Agent steps", caption: "self-check caught 3 invented claims, fixed in 1 revision" },
+      { src: "img/jobcopilot_tailored.jpg", alt: "The tailored résumé with download buttons", label: "Tailored résumé", caption: "reordered and reworded for the job, downloads as Word or PDF" },
+      { src: "img/jobcopilot_requirements.jpg", alt: "Each job requirement with the résumé lines that support it", label: "Requirements", caption: "7 of 9 backed; Kubernetes and Go reported as gaps" },
+    ] },
+  },
+  {
+    name: "Codebase Guide",
+    kind: "Agentic AI project: onboarding for any GitHub repo",
+    description: "Paste a GitHub link and ask how the code works. A tool-using agent lists files, searches and reads code, then answers with citations that link to the exact lines. Code verifies each citation (real file, real lines, lines it actually read, names that exist) and sends failures back for a fix. It also draws a dependency diagram from the imports.",
+    tags: ["Python", "FastAPI", "React", "Gemini API", "AI agents", "Mermaid"],
+    code: "https://github.com/ramya036/codebase-guide",
+    demo: { type: "image", images: [
+      { src: "img/codebaseguide_answer.jpg", alt: "The agent's tool calls, a failed verification and the verified answer", label: "Agent steps", caption: "5 tool calls; caught an unread citation and a made-up function" },
+      { src: "img/codebaseguide_citations.jpg", alt: "Answer citations showing the exact code lines", label: "Citations", caption: "every claim links to the lines it came from" },
+    ] },
+  },
+  {
     name: "AskDB",
     kind: "AI project: natural language to SQL",
     description: "Ask a database a question in plain English and get the SQL and the results back. A FAISS index retrieves only the relevant tables and similar solved examples, Gemini writes the query, and it runs on a read-only connection. If SQLite rejects it, the error goes back to the model for one fix.",
